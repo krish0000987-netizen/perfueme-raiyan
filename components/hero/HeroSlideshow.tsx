@@ -126,31 +126,31 @@ export function HeroSlideshow() {
 
             {/* Slide Text Content */}
             <div className="absolute inset-0 flex items-center">
-              <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-                <div className="max-w-2xl space-y-5 animate-fadeIn">
+              <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 w-full pt-10 sm:pt-0">
+                <div className="max-w-2xl space-y-3 sm:space-y-5 animate-fadeIn">
                   {/* Subheading with gold accent */}
                   <div className="flex items-center gap-2">
-                    <span className="w-8 h-[1px] bg-[#C8A45D]" />
-                    <span className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#E4C77E] font-medium">
+                    <span className="w-6 sm:w-8 h-[1px] bg-[#C8A45D]" />
+                    <span className="text-[8.5px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#E4C77E] font-medium">
                       {slide.subheading}
                     </span>
                   </div>
 
                   {/* Headline */}
-                  <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#F7F3EB] font-normal tracking-[0.08em] uppercase leading-[1.15]">
+                  <h1 className="font-serif text-2xl sm:text-5xl lg:text-6xl text-[#F7F3EB] font-normal tracking-[0.05em] sm:tracking-[0.08em] uppercase leading-[1.15]">
                     {slide.headline}
                   </h1>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-base text-[#B9B4AA] leading-relaxed max-w-xl font-light">
+                  <p className="text-xs sm:text-base text-[#B9B4AA] leading-relaxed max-w-xl font-light line-clamp-3 sm:line-clamp-none">
                     {slide.description}
                   </p>
 
                   {/* CTA Buttons */}
-                  <div className="pt-3 flex flex-wrap gap-4 items-center">
+                  <div className="pt-2 sm:pt-3 flex flex-wrap gap-2.5 sm:gap-4 items-center">
                     <Link
                       href={slide.ctaLink}
-                      className="btn-gold py-3.5 px-7 rounded text-xs tracking-[0.16em] inline-flex items-center gap-2 font-medium"
+                      className="btn-gold py-2.5 sm:py-3.5 px-5 sm:px-7 rounded text-[11px] sm:text-xs tracking-[0.14em] sm:tracking-[0.16em] inline-flex items-center justify-center gap-2 font-medium"
                     >
                       <span>{slide.ctaText}</span>
                       <Sparkles className="w-3.5 h-3.5" />
@@ -159,7 +159,7 @@ export function HeroSlideshow() {
                     {slide.secondaryCtaText && slide.secondaryCtaLink && (
                       <Link
                         href={slide.secondaryCtaLink}
-                        className="btn-gold-outline py-3.5 px-6 rounded text-xs tracking-[0.16em] font-medium"
+                        className="btn-gold-outline py-2.5 sm:py-3.5 px-4 sm:px-6 rounded text-[11px] sm:text-xs tracking-[0.14em] sm:tracking-[0.16em] font-medium inline-flex items-center justify-center"
                       >
                         {slide.secondaryCtaText}
                       </Link>
@@ -173,39 +173,39 @@ export function HeroSlideshow() {
       })}
 
       {/* Manual Slide Controls: Previous / Next Arrows */}
-      <div className="absolute bottom-10 right-6 sm:right-12 z-20 flex items-center gap-3">
+      <div className="absolute bottom-5 sm:bottom-10 right-4 sm:right-12 z-20 flex items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={prevSlide}
-          className="p-3 rounded-full bg-[#141414]/80 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
+          className="p-2 sm:p-3 rounded-full bg-[#141414]/85 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <button
           type="button"
           onClick={() => setIsPaused(!isPaused)}
-          className="p-3 rounded-full bg-[#141414]/80 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
+          className="p-2 sm:p-3 rounded-full bg-[#141414]/85 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
           aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
         >
-          {isPaused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
+          {isPaused ? <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
         </button>
 
         <button
           type="button"
           onClick={nextSlide}
-          className="p-3 rounded-full bg-[#141414]/80 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
+          className="p-2 sm:p-3 rounded-full bg-[#141414]/85 backdrop-blur-sm border border-[rgba(200,164,93,0.3)] text-[#B9B4AA] hover:text-[#E4C77E] hover:border-[#E4C77E] transition-all"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
       {/* Slide Indicators: Number & Progress Line */}
-      <div className="absolute bottom-10 left-6 sm:left-12 z-20 flex items-center gap-4 text-xs font-mono tracking-widest text-[#B9B4AA]">
+      <div className="absolute bottom-5 sm:bottom-10 left-4 sm:left-12 z-20 flex items-center gap-2.5 sm:gap-4 text-[10px] sm:text-xs font-mono tracking-widest text-[#B9B4AA]">
         <span className="text-[#E4C77E] font-semibold">0{currentSlide + 1}</span>
-        <div className="w-24 sm:w-32 h-[2px] bg-white/20 relative rounded-full overflow-hidden">
+        <div className="w-16 sm:w-32 h-[2px] bg-white/20 relative rounded-full overflow-hidden">
           <div
             className="absolute top-0 bottom-0 left-0 bg-[#E4C77E] transition-all duration-300"
             style={{

@@ -475,11 +475,22 @@ export function ProductDetailClient({
           </p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          <a
+            href={getWhatsAppLink(`Hello Raiyaan Luxury Concierge, I would like to order ${product.name} (${selectedVariant.size}) priced at ${formatINR(currentPrice)}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center"
+            aria-label="Order on WhatsApp"
+          >
+            <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M12.031 2C6.516 2 2.031 6.484 2.031 12c0 1.984.531 3.844 1.453 5.469L2 22l4.672-1.438A9.91 9.91 0 0 0 12.031 22c5.516 0 10-4.484 10-10s-4.484-10-10-10zm0 18.297c-1.703 0-3.328-.469-4.734-1.297l-.344-.203-3.156.969.984-3.078-.219-.359a8.21 8.21 0 0 1-1.281-4.328c0-4.563 3.719-8.281 8.281-8.281 4.563 0 8.281 3.719 8.281 8.281 0 4.563-3.719 8.297-8.281 8.297zm4.547-6.203c-.25-.125-1.469-.719-1.703-.797-.219-.094-.375-.125-.531.125-.156.25-.609.797-.75.953-.141.156-.281.172-.531.047-.25-.125-1.062-.391-2.016-1.25-.75-.672-1.25-1.5-1.391-1.75-.141-.25-.016-.391.109-.516.109-.109.25-.281.375-.422.125-.141.172-.25.25-.422.078-.172.047-.328-.016-.453-.063-.125-.531-1.281-.734-1.75-.188-.453-.391-.391-.531-.391h-.453c-.156 0-.422.063-.641.312-.219.25-.844.828-.844 2.016s.859 2.344.984 2.5c.125.156 1.703 2.609 4.125 3.656.578.25 1.031.406 1.391.516.594.188 1.125.156 1.547.094.469-.078 1.469-.609 1.672-1.203.219-.594.219-1.094.156-1.203-.063-.109-.219-.172-.469-.297z" />
+            </svg>
+          </a>
           <button
             type="button"
             onClick={handleAddToCart}
-            className="btn-gold py-2.5 px-5 rounded text-xs font-semibold flex items-center gap-1.5"
+            className="btn-gold py-2.5 px-4 sm:px-5 rounded text-xs font-semibold flex items-center gap-1.5"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Add to Bag</span>

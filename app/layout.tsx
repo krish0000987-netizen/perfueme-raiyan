@@ -8,6 +8,7 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { QuickViewModal } from "@/components/products/QuickViewModal";
 import { SearchModal } from "@/components/navigation/SearchModal";
 import { ToastNotification } from "@/components/ui/ToastNotification";
+import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
 import { BRAND_CONFIG } from "@/lib/config";
 
 const cormorant = Cormorant_Garamond({
@@ -90,6 +91,7 @@ export default function RootLayout({
           <QuickViewModal />
           <SearchModal />
           <ToastNotification />
+          <WhatsAppFloatingButton />
         </CartProvider>
       </body>
     </html>
