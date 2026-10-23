@@ -7,6 +7,16 @@ import { Search, ShoppingBag, Heart, Menu, X, ChevronRight, MessageCircle } from
 import { BRAND_CONFIG, getWhatsAppLink } from "@/lib/config";
 import { useCart } from "@/lib/cart-context";
 
+const DESKTOP_NAV_LINKS = [
+  { name: "Shop All", href: "/shop" },
+  { name: "Perfumes", href: "/perfumes" },
+  { name: "Attars & Oud", href: "/attars-oud", badge: "Artisanal" },
+  { name: "Collections", href: "/collections" },
+  { name: "About", href: "/about" },
+  { name: "Journal", href: "/journal" },
+  { name: "Contact", href: "/contact" },
+];
+
 export function Header() {
   const pathname = usePathname();
   const { itemCount, setIsCartOpen, wishlist, setIsSearchOpen } = useCart();
@@ -75,10 +85,10 @@ export function Header() {
             : "bg-[#080808]/85 backdrop-blur-sm border-b border-[rgba(200,164,93,0.18)] py-3 sm:py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-2 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center shrink-0 mr-1">
+            <div className="flex lg:hidden items-center shrink-0 mr-2">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
@@ -89,11 +99,11 @@ export function Header() {
               </button>
             </div>
 
-            {/* Brand Logo & Wordmark (Fixed layout & zero overlap) */}
-            <div className="flex-1 lg:flex-none flex items-center justify-center lg:justify-start shrink-0 min-w-max mr-0 lg:mr-6 xl:mr-10 select-none z-10">
+            {/* Brand Logo & Wordmark (Strictly pinned left, never collapses) */}
+            <div className="flex-1 lg:flex-none flex items-center justify-center lg:justify-start shrink-0 select-none z-10">
               <Link href="/" className="inline-block group focus:outline-none">
                 <div className="flex flex-col items-center lg:items-start">
-                  <span className="font-serif text-xl sm:text-2xl lg:text-[22px] xl:text-[25px] 2xl:text-[27px] tracking-[0.2em] xl:tracking-[0.24em] font-medium text-[#F7F3EB] group-hover:text-[#E4C77E] transition-colors uppercase leading-none whitespace-nowrap">
+                  <span className="font-serif text-xl sm:text-2xl lg:text-[23px] xl:text-[26px] tracking-[0.2em] font-medium text-[#F7F3EB] group-hover:text-[#E4C77E] transition-colors uppercase leading-none whitespace-nowrap">
                     RAIYAAN
                   </span>
                   <div className="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mt-1 sm:mt-1.5 whitespace-nowrap">
@@ -109,15 +119,17 @@ export function Header() {
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-3.5 xl:space-x-5 2xl:space-x-7 flex-1 justify-center shrink min-w-0">
-              {BRAND_CONFIG.navigation.slice(0, 8).map((item) => {
-                const isActive = pathname === item.href;
+            {/* Desktop Navigation Links (Safe margins, never overlaps brand or right actions) */}
+            <nav className="hidden lg:flex items-center justify-center mx-4 xl:mx-8 gap-4 xl:gap-6 2xl:gap-8">
+              {DESKTOP_NAV_LINKS.map((item) => {
+                const isActive =
+                  pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href + "/"));
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.12em] xl:tracking-[0.15em] uppercase transition-all py-1 font-medium whitespace-nowrap ${
+                    className={`relative text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] uppercase transition-colors py-1 font-medium whitespace-nowrap shrink-0 ${
                       isActive
                         ? "text-[#E4C77E]"
                         : "text-[#B9B4AA] hover:text-[#F7F3EB]"
@@ -125,7 +137,7 @@ export function Header() {
                   >
                     {item.name}
                     {item.badge && (
-                      <span className="hidden xl:inline-block ml-1 text-[8px] px-1.5 py-0.2 rounded-full border border-[rgba(200,164,93,0.5)] text-[#E4C77E] font-normal uppercase">
+                      <span className="hidden 2xl:inline-block ml-1.5 text-[8px] px-1.5 py-0.5 rounded-full border border-[rgba(200,164,93,0.5)] text-[#E4C77E] font-normal uppercase tracking-wider">
                         {item.badge}
                       </span>
                     )}
@@ -137,9 +149,9 @@ export function Header() {
               })}
             </nav>
 
-            {/* Header Right Actions */}
-            <div className="flex items-center space-x-1.5 sm:space-x-2.5 xl:space-x-3 shrink-0">
-              {/* WhatsApp Button (Mobile & Desktop) */}
+            {/* Header Right Actions (Strictly pinned right) */}
+            <div className="flex items-center space-x-2 sm:space-x-2.5 xl:space-x-3 shrink-0 z-10">
+              {/* WhatsApp Button */}
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
