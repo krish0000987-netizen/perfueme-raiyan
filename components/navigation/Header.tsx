@@ -78,30 +78,30 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center shrink-0">
+            <div className="flex lg:hidden items-center shrink-0 mr-1">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-1.5 text-[#E4C77E] hover:text-white transition-colors"
+                className="p-1.5 -ml-1 text-[#E4C77E] hover:text-white transition-colors"
                 aria-label="Open Navigation Menu"
               >
                 <Menu className="w-6 h-6" />
               </button>
             </div>
 
-            {/* Brand Logo & Wordmark (Carefully sized for mobile & desktop) */}
-            <div className="flex-1 lg:flex-initial text-center lg:text-left min-w-0">
-              <Link href="/" className="inline-block group max-w-full">
+            {/* Brand Logo & Wordmark (Fixed layout & zero overlap) */}
+            <div className="flex-1 lg:flex-none flex items-center justify-center lg:justify-start shrink-0 min-w-max mr-0 lg:mr-6 xl:mr-10 select-none z-10">
+              <Link href="/" className="inline-block group focus:outline-none">
                 <div className="flex flex-col items-center lg:items-start">
-                  <span className="font-serif text-xl sm:text-2xl lg:text-3xl tracking-[0.18em] sm:tracking-[0.25em] font-medium text-[#F7F3EB] group-hover:text-[#E4C77E] transition-colors uppercase whitespace-nowrap">
+                  <span className="font-serif text-xl sm:text-2xl lg:text-[22px] xl:text-[25px] 2xl:text-[27px] tracking-[0.2em] xl:tracking-[0.24em] font-medium text-[#F7F3EB] group-hover:text-[#E4C77E] transition-colors uppercase leading-none whitespace-nowrap">
                     RAIYAAN
                   </span>
-                  <div className="flex items-center justify-center lg:justify-start gap-1 sm:gap-2 mt-0.5 whitespace-nowrap">
-                    <span className="text-[8px] sm:text-[9px] tracking-[0.2em] sm:tracking-[0.3em] text-[#C8A45D] uppercase font-light">
+                  <div className="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 mt-1 sm:mt-1.5 whitespace-nowrap">
+                    <span className="text-[7.5px] sm:text-[8px] lg:text-[8.5px] tracking-[0.22em] text-[#C8A45D] uppercase font-light">
                       LUXURY
                     </span>
-                    <span className="inline-block w-1 h-1 rounded-full bg-[#C8A45D]/60" />
-                    <span className="text-[7.5px] sm:text-[8px] tracking-[0.12em] sm:tracking-[0.25em] text-[#B9B4AA] uppercase font-light">
+                    <span className="inline-block w-1 h-1 rounded-full bg-[#C8A45D]/70" />
+                    <span className="text-[7px] sm:text-[7.5px] lg:text-[8px] tracking-[0.16em] text-[#B9B4AA] uppercase font-light">
                       THE GATE OF HEAVEN
                     </span>
                   </div>
@@ -110,14 +110,14 @@ export function Header() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-7">
+            <nav className="hidden lg:flex items-center space-x-3.5 xl:space-x-5 2xl:space-x-7 flex-1 justify-center shrink min-w-0">
               {BRAND_CONFIG.navigation.slice(0, 8).map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative text-[11.5px] xl:text-[12px] tracking-[0.15em] uppercase transition-all py-1 font-medium whitespace-nowrap ${
+                    className={`relative text-[11px] xl:text-[11.5px] 2xl:text-[12px] tracking-[0.12em] xl:tracking-[0.15em] uppercase transition-all py-1 font-medium whitespace-nowrap ${
                       isActive
                         ? "text-[#E4C77E]"
                         : "text-[#B9B4AA] hover:text-[#F7F3EB]"
@@ -125,7 +125,7 @@ export function Header() {
                   >
                     {item.name}
                     {item.badge && (
-                      <span className="ml-1 text-[8px] px-1.5 py-0.2 rounded-full border border-[rgba(200,164,93,0.5)] text-[#E4C77E] font-normal uppercase">
+                      <span className="hidden xl:inline-block ml-1 text-[8px] px-1.5 py-0.2 rounded-full border border-[rgba(200,164,93,0.5)] text-[#E4C77E] font-normal uppercase">
                         {item.badge}
                       </span>
                     )}
@@ -138,19 +138,19 @@ export function Header() {
             </nav>
 
             {/* Header Right Actions */}
-            <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+            <div className="flex items-center space-x-1.5 sm:space-x-2.5 xl:space-x-3 shrink-0">
               {/* WhatsApp Button (Mobile & Desktop) */}
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-2 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/35 text-[#25D366] text-[11px] font-medium transition-all shadow-[0_0_10px_rgba(37,211,102,0.12)]"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/35 text-[#25D366] text-[11px] font-medium transition-all shadow-[0_0_10px_rgba(37,211,102,0.12)] shrink-0"
                 aria-label="Direct WhatsApp Concierge"
               >
                 <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.516 2 2.031 6.484 2.031 12c0 1.984.531 3.844 1.453 5.469L2 22l4.672-1.438A9.91 9.91 0 0 0 12.031 22c5.516 0 10-4.484 10-10s-4.484-10-10-10zm0 18.297c-1.703 0-3.328-.469-4.734-1.297l-.344-.203-3.156.969.984-3.078-.219-.359a8.21 8.21 0 0 1-1.281-4.328c0-4.563 3.719-8.281 8.281-8.281 4.563 0 8.281 3.719 8.281 8.281 0 4.563-3.719 8.297-8.281 8.297zm4.547-6.203c-.25-.125-1.469-.719-1.703-.797-.219-.094-.375-.125-.531.125-.156.25-.609.797-.75.953-.141.156-.281.172-.531.047-.25-.125-1.062-.391-2.016-1.25-.75-.672-1.25-1.5-1.391-1.75-.141-.25-.016-.391.109-.516.109-.109.25-.281.375-.422.125-.141.172-.25.25-.422.078-.172.047-.328-.016-.453-.063-.125-.531-1.281-.734-1.75-.188-.453-.391-.391-.531-.391h-.453c-.156 0-.422.063-.641.312-.219.25-.844.828-.844 2.016s.859 2.344.984 2.5c.125.156 1.703 2.609 4.125 3.656.578.25 1.031.406 1.391.516.594.188 1.125.156 1.547.094.469-.078 1.469-.609 1.672-1.203.219-.594.219-1.094.156-1.203-.063-.109-.219-.172-.469-.297z" />
                 </svg>
-                <span className="hidden sm:inline">WhatsApp</span>
+                <span className="hidden xl:inline">WhatsApp</span>
               </a>
 
               {/* Search Icon */}
